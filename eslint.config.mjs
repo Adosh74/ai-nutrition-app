@@ -9,7 +9,7 @@ export default antfu({
     semi: true,
     quotes: 'single',
   },
-  ignores: ['.pnpm-store/*'],
+  ignores: ['.pnpm-store/*', 'prisma/migrations/*'],
 }, {
   rules: {
     'ts/no-redeclare': 'off',

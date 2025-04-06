@@ -11,6 +11,7 @@ const envSchema = z.object({
   PORT: z.string().transform(Number).pipe(
     z.number().int().positive(),
   ).default('3000'),
+  PEPPER: z.string(),
 });
 
 // eslint-disable-next-line node/no-process-env
@@ -24,6 +25,7 @@ if (!env.success) {
 const serverEnv = {
   nodeEnv: env.data.NODE_ENV,
   port: env.data.PORT,
+  pepper: env.data.PEPPER,
 };
 
 export { NodeEnvType, serverEnv };

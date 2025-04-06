@@ -12,7 +12,7 @@ export class NotAuthenticatedError extends CustomError {
   serializeErrors() {
     return [
       {
-        message: 'Not authenticated login to get access',
+        message: 'Not authenticated. Please log in to access this resource.',
       },
     ];
   }

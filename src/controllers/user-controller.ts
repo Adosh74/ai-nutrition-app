@@ -53,6 +53,31 @@ export class UserController {
   }
 
   /**
+   * Login a user
+   * Route: POST /api/users/login
+   */
+  static loginValidation = [
+    body('email')
+      .isEmail()
+      .withMessage('Email must be valid'),
+    body('password')
+      .trim()
+      .notEmpty()
+      .withMessage('Password is required'),
+  ];
+
+  static async login(req: Request, res: Response) {
+    const { email, password } = req.body;
+
+    const user = await UserModel.login(email, password);
+
+    // Remove password from response
+    const { password: _, ...userResponse } = user;
+
+    res.status(200).send(userResponse);
+  }
+
+  /**
    * Get a user by ID
    * Route: GET /api/users/:id
    */

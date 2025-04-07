@@ -38,6 +38,6 @@ jobs:
         env:
           DATABASE_URL: postgresql://postgres:postgres@localhost:5432/testing
       - name: Run tests
-        run: pnpm test
+        run: pnpm test:ci
         env:
           DATABASE_URL: postgresql://postgres:postgres@localhost:5432/testing

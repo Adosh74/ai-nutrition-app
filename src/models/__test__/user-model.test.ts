@@ -1,15 +1,15 @@
 import type { User } from '@prisma/client';
 
-import type { CreateUserData } from './user-model';
+import type { CreateUserData } from '../user-model';
 
-import { BadRequestError } from '../errors/bad-request-error';
-import { NotFound } from '../errors/not-found-error';
-import { prismaMock } from '../test/setup';
-import { Password } from '../utils/password';
-import { UserModel } from './user-model';
+import { BadRequestError } from '../../errors/bad-request-error';
+import { NotFound } from '../../errors/not-found-error';
+import { prismaMock } from '../../test/setup';
+import { Password } from '../../utils/password';
+import { UserModel } from '../user-model';
 
 // Mock Password utility
-jest.mock('../utils/password');
+jest.mock('../../utils/password');
 
 describe('user-model', () => {
   // Test data

@@ -145,6 +145,32 @@ export class UserModel {
   }
 
   /**
+   * Authenticate a user with email and password
+   * @param email - User's email
+   * @param password - User's password
+   * @returns Authenticated user
+   * @throws BadRequestError for invalid credentials
+   */
+  static async login(email: string, password: string): Promise<User> {
+    // Find user by email
+    const user = await UserModel.findByEmail(email);
+
+    // Check if user exists
+    if (!user) {
+      throw new BadRequestError('Invalid credentials');
+    }
+
+    // Verify password
+    const passwordMatch = await Password.compare(user.password, password);
+
+    if (!passwordMatch) {
+      throw new BadRequestError('Invalid credentials');
+    }
+
+    return user;
+  }
+
+  /**
    * Common error handler for Prisma errors
    * @private
    */

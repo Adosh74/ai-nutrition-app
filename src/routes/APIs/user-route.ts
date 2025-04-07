@@ -7,10 +7,17 @@ const router = Router();
 
 // Register new user
 router.post(
-  '/',
+  '/register',
   UserController.registerValidation,
   validateRequest,
   UserController.register,
+);
+
+router.post(
+  '/login',
+  UserController.loginValidation,
+  validateRequest,
+  UserController.login,
 );
 
 // Get all users

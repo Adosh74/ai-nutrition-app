@@ -10,7 +10,7 @@ import { UserModel } from '../models/user-model';
 export class UserController {
   /**
    * Register a new user
-   * Route: POST /api/users
+   * Route: POST /api/users/register
    */
   static registerValidation = [
     body('email')

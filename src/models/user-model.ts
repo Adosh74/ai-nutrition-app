@@ -1,25 +1,9 @@
 import type { User } from '@prisma/client';
 
-import { PrismaClient } from '@prisma/client';
-
 import { BadRequestError } from '../errors/bad-request-error';
 import { NotFound } from '../errors/not-found-error';
 import { Password } from '../utils/password';
-
-// Singleton pattern for Prisma client
-class PrismaClientSingleton {
-  private static instance: PrismaClient;
-
-  public static getInstance(): PrismaClient {
-    if (!PrismaClientSingleton.instance) {
-      PrismaClientSingleton.instance = new PrismaClient();
-    }
-    return PrismaClientSingleton.instance;
-  }
-}
-
-// Use the singleton
-const prisma = PrismaClientSingleton.getInstance();
+import { prisma } from './prisma-client/prima-client';
 
 // Interfaces for better type safety and reusability
 export type CreateUserData = {
